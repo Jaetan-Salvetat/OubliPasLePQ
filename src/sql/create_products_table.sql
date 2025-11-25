@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    created_at DATE NOT NULL,
+    updated_at DATE NOT NULL
+)

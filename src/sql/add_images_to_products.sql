@@ -1,0 +1,1 @@
+# alter table to insert a new column with null value
