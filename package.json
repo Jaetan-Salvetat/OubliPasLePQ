@@ -19,6 +19,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
     "pg": "^8.16.3",

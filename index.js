@@ -20,7 +20,7 @@ const app = express()
 
 
 
-//in route files
+//self call
 app.get('/health', (req, res) => {
   res.send({ response:"OK" })
 })
