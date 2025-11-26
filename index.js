@@ -5,6 +5,9 @@ import { initdatabase } from './src/database/initializeDatabase.js'
 import { authRoute } from "./src/api/routes.js"
 import { verifyAllToken } from './src/api/token.js'
 import consts from "./src/constants.js"
+import { generateInitKey } from './generate_server_token.js'
+
+
 /*
   DATABASE SETUP
 */
@@ -12,6 +15,7 @@ await database.Connect()
 loadSQLDir()
 
 await initdatabase()
+
 
 
 
