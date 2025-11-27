@@ -1,6 +1,43 @@
-/*
+import { AddList } from "../database/add_list.js"
+import { send_new_list } from "./broadcasts.js"
 
-here i'll create all ws request from client, their actions and the response sending
 
-*/
 
+async function create_list(ws, broadcast, request) {
+    let result = await AddList(request.data.list_name)
+    if(result.success == true) {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:true
+            },
+        }
+        ws.send(JSON.stringify(response))
+        let data = send_new_list(result)
+        broadcast(data)
+    } else {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:false,
+                error:result
+            }
+        }
+        ws.send(JSON.stringify(response))
+    }
+}
+
+
+
+function create_product() {
+
+}
+
+
+
+
+
+export {
+    create_list,
+    create_product
+}

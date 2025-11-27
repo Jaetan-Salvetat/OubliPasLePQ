@@ -6,7 +6,7 @@ let tokenList = []
 
 
 export class Token {
-    constructor(value, expiration_date, last_use_date) {
+    constructor() {
         this.value = generateToken();
         this.expiration_date = Date.now() + consts.ONE_HOUR
         this.last_use_date = Date.now()
@@ -36,7 +36,7 @@ export function createToken() {
 }
 
 export function verifyToken(token) {
-    for(let t in tokenList) {
+    for(let t of tokenList) {
         if(t.value == token) {
             if(!t.isExpired()){
                 return true
