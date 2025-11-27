@@ -1,0 +1,1 @@
+UPDATE lists SET name = $2, updated_at = CURRENT_DATE WHERE id = $1;

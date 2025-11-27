@@ -1,0 +1,1 @@
+UPDATE lists_products SET bought = $2, updated_at = CURRENT_DATE WHERE id = $1;

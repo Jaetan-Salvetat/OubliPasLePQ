@@ -6,6 +6,7 @@ import { authRoute } from "./src/api/routes.js"
 import { verifyAllToken } from './src/api/token.js'
 import consts from "./src/constants.js"
 import { generateInitKey } from './generate_server_token.js'
+import { ws_start } from './src/ws/webSocket.js'
 
 
 /*
@@ -16,9 +17,7 @@ loadSQLDir()
 
 await initdatabase()
 
-
-
-
+ws_start()
 /*
   EXPRESS SETUP
 */

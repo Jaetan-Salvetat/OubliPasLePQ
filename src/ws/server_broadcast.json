@@ -1,0 +1,42 @@
+{
+    "header": {
+        "type": "new_list | product_status_edited | list_updated | list_deleted",
+        "token": ""
+    },
+
+    "data": { //new_list
+        "list_id":"LIST_ID",
+        "list_name":"LIST_NAME",
+        "created_at": "YYYY/MM/DD",
+        "updated_at": "YYYY/MM/DD",
+        "products": [
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"}
+        ]
+    },
+
+
+    "data": { //product_status_edited
+        "list_id":"LIST_ID",
+        "product_name":"PRODUCT_NAME",
+        "bought": "TRUE / FALSE",
+        "created_at": "YYYY/MM/DD",
+        "updated_at": "YYYY/MM/DD"
+    },
+
+
+    "data": { //list_updated
+        "list_id":"LIST_ID",
+        "list_name":"LIST_NAME",
+        "created_at": "YYYY/MM/DD",
+        "updated_at": "YYYY/MM/DD"
+    },
+
+    "data": { //list_deleted
+        "list_id":"LIST_ID"
+    }
+
+}

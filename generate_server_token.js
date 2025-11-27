@@ -12,7 +12,7 @@ export async function generateInitKey() {
     for(let i = 0; i < 100; i++) {
         generatedKey = generatedKey + alphabet[Math.floor(Math.random() * alphabet.length)]
     }
-    console.log("Salt: " + bcryptSalt)
+    console.log("Salt: " + process.env.BCRYPT_SALT)
     console.log("No hash: " + generatedKey)
 
     const salt = await bcrypt.genSalt(process.env.BCRYPT_SALT) 

@@ -1,0 +1,133 @@
+{
+    "header": {
+        "type": "get_all_lists | get_list | get_all_products | create_product | set_bought | edit_list | delete_list | remove_product_from_list | delete_product",
+        "token": ""
+    },
+
+
+    "data": { //get_all_lists
+    },
+    "response": {
+        "lists": [
+            {
+                "name":"LIST_NAME",
+                "created_at": "YYYY/MM/DD",
+                "updated_at": "YYYY/MM/DD",
+                "products": [
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"}
+                ]
+            },
+            {
+                "list_id":"LIST_ID",
+                "name":"LIST_NAME",
+                "created_at": "YYYY/MM/DD",
+                "updated_at": "YYYY/MM/DD",
+                "products": [
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"}
+                ]
+            }
+        ]
+    },
+
+
+    "data": { //get_all_products
+    },
+    "response": {
+        "products": [
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"},
+            { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"}
+        ]
+    },
+
+
+    "data": { //get_list
+        "list_id":"LIST_ID"
+    },
+    "response": {
+        "list": [
+            {
+                "list_id":"LIST_ID",
+                "name":"LIST_NAME",
+                "created_at": "YYYY/MM/DD",
+                "updated_at": "YYYY/MM/DD",
+                "products": [
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"},
+                    { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE"}
+                ]
+            }
+        ]
+    },
+
+
+    "data": { //create_product
+        "product_name": "PRODUCT_NAME"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "product": { "name":"PRODUCT_NAME", "bought": "TRUE / FALSE", "created_at": "YYYY/MM/DD", "updated_at": "YYYY/MM/DD"},
+        "message":"ERROR TEXT or EMPTY"
+    },
+
+
+    "data": { //set_bought
+        "product_name": "PRODUCT_NAME",
+        "list_id":"LIST_ID",
+        "value":"TRUE / FALSE"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "message":"ERROR TEXT or EMPTY"
+    },
+
+
+    "data": { //edit_list
+        "list_id":"LIST_ID",
+        "name":"LIST_NAME"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "message":"ERROR TEXT or EMPTY"
+    },
+
+    
+    "data": { //delete_list
+        "list_id":"LIST_ID"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "message":"ERROR TEXT or EMPTY"
+    },
+
+    "data": { //remove_product_from_list
+        "product_name":"PRODUCT_NAME",
+        "list_id":"LIST_ID"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "message":"ERROR TEXT or EMPTY"
+    },
+
+    
+    "data": { //delete_product
+        "product_name":"PRODUCT_NAME"
+    },
+    "response": {
+        "success":"TRUE / FALSE",
+        "message":"ERROR TEXT or EMPTY"
+    }
+
+}
