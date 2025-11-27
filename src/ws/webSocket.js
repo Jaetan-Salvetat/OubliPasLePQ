@@ -1,25 +1,35 @@
 import { WebSocketServer } from 'ws';
 
 
-export let wss = null
-export let clients = []
-export function ws_start() {
-    wss = new WebSocketServer({ port: 8078 });
-
-    wss.on('connection', function connection(ws) {
-
-        
-        ws.on('message', function message(data) {
-            console.log('received: %s', data);
-        })
-    ws.send('something');
-    });
-}
-
-class WSS {
+export class WSS {
     constructor() {
-        this.server = new WebSocketServer({ port: process.env.WS_PORT })
-        this.client = []
+        this.server = new WebSocketServer({ noServer: true })
+        this.clients = new Set()
+    }
 
+    start() {
+        this.server.on('connection', ws => {
+            this.clients.add(ws);
+
+            ws.on('message', data => {
+                console.log('received:', data.toString());
+            });
+
+            ws.on('close', () => {
+                this.clients.delete(ws);
+            });
+        });
+    }
+
+    handleUpgrade(req, socket, head) {
+        this.server.handleUpgrade(req, socket, head, ws => {
+            this.server.emit('connection', ws, req);
+        });
+    }
+
+    broadcast(action) {
+        for (let client of this.clients) {
+            action(client);
+        }
     }
 }

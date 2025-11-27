@@ -1,6 +1,6 @@
 {
     "header": {
-        "type": "get_all_lists | get_list | get_all_products | create_product | set_bought | edit_list | delete_list | remove_product_from_list | delete_product",
+        "type": "create_list | get_all_lists | get_list | get_all_products | create_product | set_bought | edit_list | delete_list | remove_product_from_list | delete_product",
         "token": ""
     },
 

@@ -1,7 +1,4 @@
-import express  from 'express'
-import bcrypt from "bcrypt"
-import { sql } from '../sql/sqlLoader.js'
-import { CheckWSToken, CheckAuthToken } from './auth.js'
+import { CheckAuthToken } from './auth.js'
 import { createToken } from './token.js'
 
 export async function authRoute(app) {
