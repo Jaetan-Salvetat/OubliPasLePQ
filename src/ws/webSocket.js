@@ -27,7 +27,6 @@ export class WSS {
 
             ws.on('message', data => {
                 let jsonData = JSON.parse(data)
-                console.log(jsonData)
                 if(!verifyToken(jsonData.header.token)) {
                     ws.send(JSON.stringify({header:{type:jsonData.header.type, success:false, error:"invalid_token"}}))
                     return
@@ -41,6 +40,8 @@ export class WSS {
                         create_product(ws, this.broadcast, jsonData)
                         break;
                     case "get_everything":
+                        get_everything(ws, this.broadcast, jsonData)
+                        break;
 
                 }
             });

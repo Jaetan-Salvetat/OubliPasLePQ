@@ -59,17 +59,16 @@ async function create_product(ws, broadcast, request) {
 }
 
 async function get_everything(ws, broadcast, request) {
-    let result = await get_everything(request.data.product_name)
+    let result = await getEverything()
     if(result.success == true) {
         let response = {
             header: {
                 type:request.header.type,
                 success:true
             },
+            data:result.data
         }
         ws.send(JSON.stringify(response))
-        let data = await send_new_product(result.data)
-        broadcast(data)
     } else {
         let response = {
             header: {
