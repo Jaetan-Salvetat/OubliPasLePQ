@@ -13,7 +13,7 @@ async function create_list(ws, broadcast, request) {
             },
         }
         ws.send(JSON.stringify(response))
-        let data = send_new_list(result)
+        let data = await send_new_list(result.data)
         broadcast(data)
     } else {
         let response = {

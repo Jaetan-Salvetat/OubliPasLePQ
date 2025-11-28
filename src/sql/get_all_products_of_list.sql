@@ -1,0 +1,1 @@
+SELECT * FROM lists_products WHERE list_id = $1;

@@ -1,19 +1,13 @@
-export function send_new_list(id) {
+import { get_complete_list } from "../database/get_complete_list.js"
 
-
-    let data = {
-        list_id:"LIST_ID",
-        list_name:"LIST_NAME",
-        created_at: "YYYY/MM/DD",
-        updated_at: "YYYY/MM/DD",
-        products: [
-            { name:"PRODUCT_NAME", bought: "TRUE / FALSE"},
-            { name:"PRODUCT_NAME", bought: "TRUE / FALSE"},
-            { name:"PRODUCT_NAME", bought: "TRUE / FALSE"},
-            { name:"PRODUCT_NAME", bought: "TRUE / FALSE"},
-            { name:"PRODUCT_NAME", bought: "TRUE / FALSE"}
-        ]
+export async function send_new_list(id) {
+    let createdList = await get_complete_list(id)
+    let response = {
+        header: {
+            type:"new_list",
+        },
+        data:createdList
     }
 
-    return data
+    return response
 }

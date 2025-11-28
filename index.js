@@ -7,7 +7,7 @@ import { verifyAllToken } from './src/api/token.js'
 import consts from "./src/constants.js"
 import { WSS } from './src/ws/webSocket.js'
 import http from "http"
-
+import { get_complete_list } from './src/database/get_complete_list.js'
 
 /*
   DATABASE SETUP

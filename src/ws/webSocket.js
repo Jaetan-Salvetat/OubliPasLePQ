@@ -22,7 +22,6 @@ export class WSS {
     start() {
         this.server.on('connection', ws => {
             this.clients.add(new Client(ws));
-            console.log(this.clients)
 
             ws.on('message', data => {
                 let jsonData = JSON.parse(data)
@@ -51,6 +50,7 @@ export class WSS {
     }
 
     broadcast(response) {
+        console.log(response)
         for(let client of this.clients) {
             client.ws.send(JSON.stringify(response))
         }

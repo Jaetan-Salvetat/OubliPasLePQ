@@ -1,10 +1,10 @@
 import { sql } from "../sql/sqlLoader.js"
 import { database } from "./connect.js"
 
-export async function AddList(name) {
+export async function add_product_to_list(name) {
     try {
-        let id = await database.client.query(sql.add_list, [name])
-        return {success:true, data:id.rows[0].id}
+        await database.client.query(sql.add_product_to_list, [name])
+        return {success:true, data:{}}
     } catch(e) {
         return {success:false, data:e.details}
     }
