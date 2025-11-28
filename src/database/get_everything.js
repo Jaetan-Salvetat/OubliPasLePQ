@@ -4,5 +4,6 @@ import { database } from "./connect.js"
 
 export async function get_everything() {
     let lists = await database.client.query(sql.get_everything)
+    console.log(lists.rows)
     return lists.rows
 }

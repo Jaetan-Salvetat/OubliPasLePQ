@@ -1,5 +1,10 @@
 import { AddList } from "../database/add_list.js"
-import { send_new_list } from "./broadcasts.js"
+import { AddProduct } from "../database/add_product.js"
+import { 
+    send_new_list,
+    send_new_product
+} from "./broadcasts.js"
+import { get_everything as getEverything } from "../database/get_everything.js"
 
 
 
@@ -29,9 +34,55 @@ async function create_list(ws, broadcast, request) {
 
 
 
-function create_product() {
-
+async function create_product(ws, broadcast, request) {
+    let result = await AddProduct(request.data.product_name)
+    if(result.success == true) {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:true
+            },
+        }
+        ws.send(JSON.stringify(response))
+        let data = await send_new_product(result.data)
+        broadcast(data)
+    } else {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:false,
+                error:result
+            }
+        }
+        ws.send(JSON.stringify(response))
+    }
 }
+
+async function get_everything(ws, broadcast, request) {
+    let result = await get_everything(request.data.product_name)
+    if(result.success == true) {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:true
+            },
+        }
+        ws.send(JSON.stringify(response))
+        let data = await send_new_product(result.data)
+        broadcast(data)
+    } else {
+        let response = {
+            header: {
+                type:request.header.type,
+                success:false,
+                error:result
+            }
+        }
+        ws.send(JSON.stringify(response))
+    }
+}
+
+
 
 
 
@@ -39,5 +90,6 @@ function create_product() {
 
 export {
     create_list,
-    create_product
+    create_product,
+    get_everything
 }

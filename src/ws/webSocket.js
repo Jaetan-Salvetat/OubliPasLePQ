@@ -2,8 +2,10 @@ import { WebSocketServer } from 'ws';
 import { createToken, verifyToken } from '../api/token.js';
 import { 
     create_list,
-    create_product
+    create_product,
+    get_everything
 } from './client_request.js';
+import { json } from 'express';
 
 
 class Client {
@@ -25,6 +27,7 @@ export class WSS {
 
             ws.on('message', data => {
                 let jsonData = JSON.parse(data)
+                console.log(jsonData)
                 if(!verifyToken(jsonData.header.token)) {
                     ws.send(JSON.stringify({header:{type:jsonData.header.type, success:false, error:"invalid_token"}}))
                     return
@@ -34,6 +37,11 @@ export class WSS {
                     case "create_list":
                         create_list(ws, this.broadcast, jsonData)
                         break;
+                    case "create_product":
+                        create_product(ws, this.broadcast, jsonData)
+                        break;
+                    case "get_everything":
+
                 }
             });
 
@@ -50,7 +58,6 @@ export class WSS {
     }
 
     broadcast(response) {
-        console.log(response)
         for(let client of this.clients) {
             client.ws.send(JSON.stringify(response))
         }

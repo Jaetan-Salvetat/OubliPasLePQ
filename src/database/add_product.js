@@ -3,11 +3,9 @@ import { database } from "./connect.js"
 
 export async function AddProduct(name) {
     try {
-        await database.client.query(sql.add_product, [name])
+        let id = await database.client.query(sql.add_product, [name])
+        return {success:true, data:id.rows[0].id}
     } catch(e) {
-        if(e.detail.includes("already exists")) {
-            //console.log("n'existe pas")
-            //return "already exists in our own websocket format"
-        }
+        return {success:false, data:e.details}
     }
 }
